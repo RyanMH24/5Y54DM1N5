@@ -54,4 +54,18 @@ export const terms: GlossaryTerm[] = [
     definition:
       "Any device — laptop, desktop, phone, server — that connects to and communicates over a network.",
   },
+  {
+    id: "ip-address",
+    term: "IP Address",
+    acronymFor: "Internet Protocol Address",
+    definition:
+      "A numeric label assigned to a device on a network, used to identify it and route traffic to it — like a mailing address for data.",
+  },
+  {
+    id: "dns",
+    term: "DNS",
+    acronymFor: "Domain Name System",
+    definition:
+      "The system that translates human-readable names (like example.com) into the IP addresses computers use to find each other.",
+  },
 ];

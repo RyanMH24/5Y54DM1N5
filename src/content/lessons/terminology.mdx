@@ -1,0 +1,55 @@
+---
+id: terminology
+moduleId: core-fundamentals
+title: Sysadmin Terminology
+order: 4
+summary: A tour of the acronyms and terms you'll hear constantly in IT support and administration.
+quizId: terminology-quiz
+---
+
+## Why a whole lesson on vocabulary
+
+Walk into almost any IT support role and you'll hear a wall of acronyms on
+day one, used as if everyone already knows them. This lesson is a fast tour
+of the terms that come up most — the full reference lives in the
+[glossary](/glossary) if you ever need to look one up again later.
+
+## Identity and access
+
+[SSO](/glossary/sso) (Single Sign-On) lets someone log in once and reach
+every system they're authorized for, instead of juggling a dozen separate
+passwords. The system that holds those identities — who exists, what
+group they're in, what they're allowed to touch — is often
+[AD](/glossary/ad) (Active Directory) on a Windows-based network. AD applies
+rules to users and computers through [GPO](/glossary/gpo)s (Group Policy
+Objects): a GPO might enforce a minimum password length, deploy software, or
+lock a desktop background across an entire department at once.
+
+## Managing devices
+
+[MDM](/glossary/mdm) (Mobile Device Management) is the device-side
+counterpart to AD — it enrolls, configures, secures, and can remotely wipe
+laptops and phones. Every device MDM manages is an
+[endpoint](/glossary/endpoint): company terminology for "a thing that
+connects to the network," whether that's a laptop, a phone, or a server.
+
+## Support and service terms
+
+When someone reports a problem, it becomes a ticket in a
+[ticket queue](/glossary/ticket-queue) — the ordered backlog of open issues
+waiting to be worked. If the first person who picks it up can't resolve it,
+they perform an [escalation](/glossary/escalation): handing it to a more
+senior or specialized team rather than letting it sit unresolved. How fast a
+ticket is supposed to be answered and fixed is usually governed by an
+[SLA](/glossary/sla) (Service Level Agreement) — a commitment the support
+team has made about response and resolution time.
+
+## Putting it together
+
+None of these terms are complicated on their own — the hard part is just
+that they all get thrown around at once, in conversation, without
+definition. Once you've got SSO, AD, GPO, MDM, endpoint, ticket queue,
+escalation, and SLA solid, most day-one conversations in an IT support role
+stop sounding like a different language.
+
+<Quiz id="terminology-quiz" />

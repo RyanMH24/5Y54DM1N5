@@ -1,0 +1,53 @@
+---
+id: hardware-troubleshooting
+moduleId: core-fundamentals
+title: Hardware & Troubleshooting
+order: 3
+summary: Core hardware components and a repeatable method for diagnosing problems on an endpoint.
+quizId: hardware-troubleshooting-quiz
+---
+
+## The core components
+
+Every computer — laptop, desktop, or server — is built from the same basic
+parts:
+
+- **CPU** — executes instructions; often called the "brain" of the machine.
+- **RAM** — fast, temporary memory that holds whatever is currently running;
+  it's wiped when the machine powers off.
+- **Storage** (SSD or HDD) — holds data permanently, even without power.
+- **Motherboard** — connects everything else together.
+- **Power supply** — converts and delivers electricity to every component.
+
+Knowing what each part actually does helps you narrow down a problem fast.
+"The computer is slow" could point to CPU, RAM, or storage — but "the
+computer is slow *only* when opening large files" points much more
+specifically at storage.
+
+## A repeatable troubleshooting method
+
+Good troubleshooting isn't guessing — it's a method you can apply to almost
+any problem on an [endpoint](/glossary/endpoint):
+
+1. **Reproduce it.** Get the exact steps that cause the problem. "It's
+   broken" is not enough to act on; "clicking Save in the invoice app
+   freezes the window for 30 seconds" is.
+2. **Isolate variables.** Does it happen on other machines, for other
+   users, on a different network? Each answer rules things in or out.
+3. **Start with the simplest explanation.** Loose cable, full disk, an app
+   that needs a restart — these are far more common than exotic hardware
+   failure, so check them first.
+4. **Change one thing at a time.** If you change three settings at once and
+   the problem goes away, you won't know which one actually fixed it.
+5. **Document what you found.** The next person (possibly future you) with
+   a similar ticket will thank you.
+
+## Why the method matters more than memorizing parts
+
+You don't need to be able to repair a motherboard to be effective in IT
+support. What you need is the discipline to reproduce a problem, narrow down
+what's actually causing it, and fix the real cause instead of the first
+thing that looks suspicious. That discipline is the same whether the
+problem turns out to be a loose cable or a misconfigured setting.
+
+<Quiz id="hardware-troubleshooting-quiz" />

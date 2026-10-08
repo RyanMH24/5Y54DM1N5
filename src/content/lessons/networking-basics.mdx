@@ -1,0 +1,57 @@
+---
+id: networking-basics
+moduleId: core-fundamentals
+title: Networking Basics
+order: 1
+summary: What a network is, how devices find each other with IP addresses and DNS, and what a subnet does.
+quizId: networking-basics-quiz
+---
+
+## What a network actually is
+
+A network is just a group of devices that can send data to each other. At
+home that might be your laptop, phone, and a router. In a company it could
+be thousands of devices spread across offices, data centers, and the cloud.
+Every device on a network needs two things to participate: a way to be
+identified, and a way to find other devices it wants to talk to.
+
+## IP addresses: how devices are identified
+
+Every device on a network gets an [IP address](/glossary/ip-address) — a
+numeric label like `192.168.1.42`. It works like a mailing address: when one
+device wants to send data to another, it addresses that data to the
+recipient's IP address, and the network routes it there. Addresses on your
+home or office network are usually "private" (not reachable directly from
+the internet); a router translates between those and a single "public"
+address the rest of the internet can see.
+
+## DNS: how names become addresses
+
+Typing an IP address every time you wanted to visit a website would be
+miserable, so almost nobody does it. Instead, you type a name like
+`example.com`, and [DNS](/glossary/dns) — the system that maps names to IP
+addresses — looks up the matching address behind the scenes. As a sysadmin,
+a huge share of "the website/app is down" tickets turn out to be a DNS
+problem: the name isn't resolving to the address it should, even though the
+server itself is fine. Checking DNS early is a habit worth building.
+
+## Subnets: splitting a network into smaller pieces
+
+A subnet is a smaller, logically segmented portion of a larger network.
+Instead of putting every device — servers, employee laptops, guest Wi-Fi —
+on one flat network, administrators split it into subnets so that traffic,
+security policy, and troubleshooting can all be scoped more narrowly. If
+something goes wrong on the guest Wi-Fi subnet, it shouldn't be able to
+reach the finance team's servers on a different subnet. Subnetting is one of
+the first tools you reach for when designing or securing a network.
+
+## Why this matters day to day
+
+You don't need to be a network engineer to work in IT support or
+administration, but these three ideas — addresses, name resolution, and
+segmentation — come up constantly: assigning a new device an address,
+diagnosing why a hostname won't resolve, or understanding why one part of
+the network can't reach another. The rest of this track builds on this
+vocabulary, so it's worth having it solid before moving on.
+
+<Quiz id="networking-basics-quiz" />

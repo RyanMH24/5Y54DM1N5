@@ -1,0 +1,52 @@
+---
+id: os-fundamentals
+moduleId: core-fundamentals
+title: OS Fundamentals
+order: 2
+summary: What an operating system does, how processes and the filesystem work, and why it matters for support.
+quizId: os-fundamentals-quiz
+---
+
+## What an operating system is for
+
+An operating system (OS) sits between a computer's hardware and the
+programs people actually want to run. Its job is to manage shared
+resources — the CPU, memory, storage, network — and hand them out to
+programs safely, so an app doesn't need to know how to talk to a disk
+controller directly. Windows, macOS, and Linux are all operating systems;
+every [endpoint](/glossary/endpoint) you'll support runs one.
+
+## Processes: programs while they're running
+
+When you open an app, the OS starts a **process** — a running instance of
+that program, with its own slice of memory and its own view of what it's
+currently doing. A single program can often run as multiple processes at
+once (open two browser windows, get two processes). The OS is constantly
+juggling many processes, giving each one a slice of CPU time so everything
+feels like it's running simultaneously, even on hardware with far fewer CPU
+cores than there are running processes.
+
+This matters in support work because "the app is frozen" and "the process is
+pegging the CPU" are different problems with different fixes — one is often
+solved by waiting or restarting the app, the other by figuring out *why*
+that process is consuming so much.
+
+## The filesystem: where everything lives
+
+The OS also organizes storage into a **filesystem** — a hierarchy of
+directories (folders) and files. `C:\Users\jordan\Documents` on Windows and
+`/home/jordan/Documents` on Linux are both paths through a filesystem
+hierarchy, just with different conventions. Permissions attached to files
+and directories (who can read, write, or execute them) are one of the most
+common things a sysadmin configures and troubleshoots.
+
+## Why this is foundational
+
+Almost every support task eventually touches the OS layer: a process that
+won't quit, a permission that's blocking a file, storage that's run out of
+space, an update that needs installing. Knowing roughly what the OS is
+doing under the hood — managing processes, organizing files, mediating
+access to hardware — makes it much easier to reason about why something
+broke instead of just guessing.
+
+<Quiz id="os-fundamentals-quiz" />
