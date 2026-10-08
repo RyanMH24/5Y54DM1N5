@@ -27,4 +27,4 @@ Plan: [curriculum-sequencing-plan.md](./curriculum-sequencing-plan.md) · Spec:
 - [x] Completed activities remain linked and direct locked URLs still render
 - [x] Full test, typecheck, lint, and build gates pass
 - [x] All spec Success Criteria met
-- [ ] Review with project owner before considering the capability map complete
+- [x] Review with project owner before considering the capability map complete
