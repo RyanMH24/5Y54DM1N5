@@ -59,17 +59,17 @@ dashboard can render it.
 ### Phase 2: Dashboard and end-to-end verification
 
 - [x] Task 3: Curriculum dashboard on `/`
-- [ ] Task 4: Full regression + browser verification
+- [x] Task 4: Full regression + browser verification
 
 ### Checkpoint: Complete
 
-- [ ] A cleared browser shows `0/14 complete`, one `Up next` activity, and 13
+- [x] A cleared browser shows `0/14 complete`, one `Up next` activity, and 13
       non-clickable locked activities
-- [ ] Lesson→lesson, lesson→lab, and lesson→console completion boundaries each
+- [x] Lesson→lesson, lesson→lab, and lesson→console completion boundaries each
       unlock exactly the next activity after returning to `/`
-- [ ] Completed activities remain linked and direct locked URLs still render
-- [ ] `npm test`, `npm run typecheck`, `npm run lint`, and `npm run build` pass
-- [ ] All spec Success Criteria are met
+- [x] Completed activities remain linked and direct locked URLs still render
+- [x] `npm test`, `npm run typecheck`, `npm run lint`, and `npm run build` pass
+- [x] All spec Success Criteria are met
 - [ ] Review with project owner before considering the capability map complete
 
 ## Task Details
@@ -83,18 +83,18 @@ activity through its existing lesson, terminal-lab, or mock-console loader.
 
 **Acceptance criteria:**
 
-- [ ] The catalog contains the four specified schedule groups and all 14 real
+- [x] The catalog contains the four specified schedule groups and all 14 real
       activities in the spec's exact order
-- [ ] Every id/href is unique and resolves through the loader for its declared
+- [x] Every id/href is unique and resolves through the loader for its declared
       kind; sample/demo fixtures do not appear
-- [ ] The catalog and helpers are fully typed without changing existing lesson,
+- [x] The catalog and helpers are fully typed without changing existing lesson,
       lab, console, or progress schemas
 
 **Verification:**
 
-- [ ] Tests pass: `npm test -- tests/lib/curriculum-sequencing/catalog.test.ts`
-- [ ] Typecheck passes: `npm run typecheck`
-- [ ] Lint passes: `npm run lint`
+- [x] Tests pass: `npm test -- tests/lib/curriculum-sequencing/catalog.test.ts`
+- [x] Typecheck passes: `npm run typecheck`
+- [x] Lint passes: `npm run lint`
 
 **Dependencies:** None
 
@@ -115,19 +115,19 @@ corrupted/missing records, and fully completed curriculum behavior.
 
 **Acceptance criteria:**
 
-- [ ] The browser adapter delegates lesson, lab, and console activities to the
+- [x] The browser adapter delegates lesson, lab, and console activities to the
       correct existing loader and treats missing/corrupted records as incomplete
-- [ ] Pure derivation returns exactly one `available` item after a consecutive
+- [x] Pure derivation returns exactly one `available` item after a consecutive
       completed prefix, locks everything later, and keeps completed out-of-order
       activities visibly completed without unlocking past an earlier gap
-- [ ] A fully complete path has 14 completed activities, no available or locked
+- [x] A fully complete path has 14 completed activities, no available or locked
       activities, and the correct completed count
 
 **Verification:**
 
-- [ ] Tests pass: `npm test -- tests/lib/curriculum-sequencing/progress.test.ts`
-- [ ] Foundation tests pass: `npm test -- tests/lib/curriculum-sequencing`
-- [ ] Typecheck and lint pass: `npm run typecheck` and `npm run lint`
+- [x] Tests pass: `npm test -- tests/lib/curriculum-sequencing/progress.test.ts`
+- [x] Foundation tests pass: `npm test -- tests/lib/curriculum-sequencing`
+- [x] Typecheck and lint pass: `npm run typecheck` and `npm run lint`
 
 **Dependencies:** Task 1
 
@@ -148,19 +148,19 @@ tests across empty and seeded progress from all three stores.
 
 **Acceptance criteria:**
 
-- [ ] `/` renders all modules/activities in order with `completed/14 complete`
+- [x] `/` renders all modules/activities in order with `completed/14 complete`
       and textual `Completed`, `Up next`, or `Locked` state for each item
-- [ ] With empty storage only Networking Basics is linked as `Up next`; seeding
+- [x] With empty storage only Networking Basics is linked as `Up next`; seeding
       consecutive lesson/lab/console completion updates the count and unlocks
       exactly the next catalog activity
-- [ ] Locked entries are not links, completed entries remain links, and server
+- [x] Locked entries are not links, completed entries remain links, and server
       rendering/client hydration do not read browser storage unsafely
 
 **Verification:**
 
-- [ ] Tests pass: `npm test -- tests/app/page.test.tsx`
-- [ ] Full tests pass: `npm test`
-- [ ] Typecheck and lint pass: `npm run typecheck` and `npm run lint`
+- [x] Tests pass: `npm test -- tests/app/page.test.tsx`
+- [x] Full tests pass: `npm test`
+- [x] Typecheck and lint pass: `npm run typecheck` and `npm run lint`
 
 **Dependencies:** Task 2
 
@@ -181,20 +181,20 @@ verified checkpoints in the module checklist.
 
 **Acceptance criteria:**
 
-- [ ] The complete automated suite, typecheck, lint, and production build pass
-- [ ] Browser verification proves initial state, first unlock, lesson→lab
+- [x] The complete automated suite, typecheck, lint, and production build pass
+- [x] Browser verification proves initial state, first unlock, lesson→lab
       unlock, lesson→console unlock, reload persistence, and direct locked URL
       access
-- [ ] The implementation meets every Success Criterion without new
+- [x] The implementation meets every Success Criterion without new
       dependencies, storage keys, route guards, or fixture activities
 
 **Verification:**
 
-- [ ] `npm test`
-- [ ] `npm run typecheck`
-- [ ] `npm run lint`
-- [ ] `npm run build`
-- [ ] Manual browser flow from the Phase 2 checkpoint
+- [x] `npm test`
+- [x] `npm run typecheck`
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Manual browser flow from the Phase 2 checkpoint
 
 **Dependencies:** Task 3
 

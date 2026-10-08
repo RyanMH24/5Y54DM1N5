@@ -18,13 +18,13 @@ Plan: [curriculum-sequencing-plan.md](./curriculum-sequencing-plan.md) · Spec:
 ## Phase 2: Dashboard and end-to-end verification
 
 - [x] Task 3: Curriculum dashboard on `/`
-- [ ] Task 4: Full regression + browser verification
+- [x] Task 4: Full regression + browser verification
 
 ### Checkpoint: Complete
 
-- [ ] Cleared browser shows `0/14 complete`, one `Up next`, and 13 locked items
-- [ ] Lesson→lesson, lesson→lab, and lesson→console boundaries unlock correctly
-- [ ] Completed activities remain linked and direct locked URLs still render
-- [ ] Full test, typecheck, lint, and build gates pass
-- [ ] All spec Success Criteria met
+- [x] Cleared browser shows `0/14 complete`, one `Up next`, and 13 locked items
+- [x] Lesson→lesson, lesson→lab, and lesson→console boundaries unlock correctly
+- [x] Completed activities remain linked and direct locked URLs still render
+- [x] Full test, typecheck, lint, and build gates pass
+- [x] All spec Success Criteria met
 - [ ] Review with project owner before considering the capability map complete
