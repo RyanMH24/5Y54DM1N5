@@ -41,4 +41,26 @@ describe("linux-powershell labs", () => {
       );
     });
   });
+
+  it("powershell-basics-lab accepts real aliases for get-process and get-service", () => {
+    const lab = getLabById("powershell-basics-lab")!;
+    const getProcessStep = lab.steps.find((step) => step.id === "get-process")!;
+    const getServiceStep = lab.steps.find((step) => step.id === "get-service")!;
+
+    expect(matchCommand(getProcessStep, "gps").matched).toBe(true);
+    expect(matchCommand(getServiceStep, "gsv").matched).toBe(true);
+  });
+
+  it("powershell-basics-lab's pipeline-filter step tolerates alias and spacing variations", () => {
+    const lab = getLabById("powershell-basics-lab")!;
+    const pipelineStep = lab.steps.find((step) => step.id === "pipeline-filter")!;
+
+    expect(matchCommand(pipelineStep, "gps | Where-Object { $_.CPU -gt 100 }").matched).toBe(true);
+    expect(
+      matchCommand(pipelineStep, "Get-Process|Where-Object{ $_.CPU -gt 100 }").matched,
+    ).toBe(true);
+    expect(matchCommand(pipelineStep, "Get-Process | Where-Object { $_.CPU -gt 5 }").matched).toBe(
+      false,
+    );
+  });
 });
