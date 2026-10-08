@@ -1,0 +1,59 @@
+---
+id: linux-cli-basics
+moduleId: linux-powershell
+title: Linux CLI Fundamentals
+order: 1
+summary: Navigating the filesystem, viewing and managing files, checking processes, and a taste of scripting from the Linux shell.
+quizId: linux-cli-basics-quiz
+---
+
+## Finding your way around
+
+Everything in Linux happens from a shell prompt, and almost every session
+starts the same way: figuring out where you are. `pwd` ("print working
+directory") shows your current location in the filesystem, and `ls` lists
+what's in it. Add `-la` to `ls` and you get a long listing that also shows
+permissions, ownership, and hidden files — files whose name starts with a
+dot. `cd` changes directory; `cd ..` moves up one level, and `cd` with no
+argument takes you home.
+
+## Looking at and managing files
+
+Once you've found a file, `cat` prints its contents straight to the
+terminal — great for short files, less great for anything long (for that,
+tools like `less` page through it instead). To duplicate a file, `cp
+source destination` copies it; `mv source destination` moves or renames it
+(Linux doesn't have a separate "rename" command — moving a file to a new
+name in the same place *is* renaming it). `rm` deletes a file, permanently,
+with no recycle bin to recover it from — always double-check the path
+before you run it.
+
+## Checking what's running
+
+`ps` lists running processes. On a busy [endpoint](/glossary/endpoint),
+`ps aux` is the version you'll reach for most — it shows every process,
+for every user, with details like CPU and memory use. Pairing that with
+`grep` (which filters lines matching a pattern) — `ps aux | grep nginx` —
+is one of the most common one-liners in day-to-day troubleshooting: "is
+this specific thing actually running?"
+
+## A taste of scripting
+
+Even a single line can save real time. A simple loop like:
+
+```bash
+for f in *.txt; do echo "Found: $f"; done
+```
+
+runs the same action — here, just printing a message — once for every
+`.txt` file in the current directory. `$f` is a variable holding whatever
+filename the loop is currently on. Real scripts chain many lines like this
+together, but the core idea (repeat an action over a list of things) is the
+same whether the script is one line or a hundred.
+
+## Practice it
+
+Reading about commands only gets you so far — try them yourself in the
+[Linux CLI Basics lab](/labs/linux-cli-basics-lab).
+
+<Quiz id="linux-cli-basics-quiz" />

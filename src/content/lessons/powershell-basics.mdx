@@ -1,0 +1,56 @@
+---
+id: powershell-basics
+moduleId: linux-powershell
+title: PowerShell Fundamentals
+order: 2
+summary: Cmdlet naming, common cmdlets, the pipeline, and a taste of scripting from PowerShell.
+quizId: powershell-basics-quiz
+---
+
+## Cmdlets and the Verb-Noun pattern
+
+PowerShell commands are called **cmdlets**, and almost all of them follow a
+`Verb-Noun` naming pattern: `Get-Process`, `Get-Service`, `Stop-Process`,
+`New-Item`. Once you know the pattern, you can often guess the right cmdlet
+just from what you're trying to do — want to see something, start with
+`Get-`; want to create something, start with `New-`. This consistency is
+one of PowerShell's biggest advantages over a shell with less predictable
+command names.
+
+## A few cmdlets you'll use constantly
+
+`Get-Process` lists running processes on the machine — the PowerShell
+equivalent of what `ps` does on Linux. `Get-Service` lists Windows services
+and whether each one is running or stopped. `Get-ChildItem` lists the files
+and folders in a location, playing the same role `ls` plays on Linux (its
+short alias, `gci`, or even `dir`, work too — PowerShell is forgiving about
+how you ask for the same thing).
+
+## The pipeline
+
+PowerShell's pipeline, written with `|`, sends the output of one cmdlet
+into the next one as input — not as plain text, but as structured objects
+with real properties. `Get-Process | Where-Object { $_.CPU -gt 100 }` takes
+every running process and filters it down to only the ones using more than
+100 CPU seconds. Chaining cmdlets together this way is the normal way to
+build up a more specific answer from a general one, one filter at a time.
+
+## A taste of scripting
+
+A PowerShell variable starts with a dollar sign:
+
+```powershell
+$threshold = 100
+Get-Process | Where-Object { $_.CPU -gt $threshold }
+```
+
+Here `$threshold` holds a value that the filter condition reuses, so
+changing it in one place changes the behavior everywhere it's used — the
+same idea behind every script, whether it's two lines or two hundred.
+
+## Practice it
+
+Reading about cmdlets only gets you so far — try them yourself in the
+[PowerShell Basics lab](/labs/powershell-basics-lab).
+
+<Quiz id="powershell-basics-quiz" />
