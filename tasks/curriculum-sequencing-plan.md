@@ -45,7 +45,7 @@ dashboard can render it.
 
 ### Phase 1: Catalog and state foundation
 
-- [ ] Task 1: Typed curriculum catalog + integrity tests
+- [x] Task 1: Typed curriculum catalog + integrity tests
 - [ ] Task 2: Cross-store progress derivation + unit tests
 
 ### Checkpoint: Foundation
@@ -221,4 +221,3 @@ verified checkpoints in the module checklist.
 None outstanding. The four choices recorded in the approved spec are treated
 as decisions: dashboard-only locks, existing quiz completion semantics, one
 linear path, and informational six-week labels without deadlines.
-

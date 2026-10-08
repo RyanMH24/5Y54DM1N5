@@ -5,7 +5,7 @@ Plan: [curriculum-sequencing-plan.md](./curriculum-sequencing-plan.md) · Spec:
 
 ## Phase 1: Catalog and state foundation
 
-- [ ] Task 1: Typed curriculum catalog + integrity tests
+- [x] Task 1: Typed curriculum catalog + integrity tests
 - [ ] Task 2: Cross-store progress derivation + unit tests
 
 ### Checkpoint: Foundation
