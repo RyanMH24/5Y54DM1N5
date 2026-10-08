@@ -17,7 +17,7 @@ Plan: [curriculum-sequencing-plan.md](./curriculum-sequencing-plan.md) · Spec:
 
 ## Phase 2: Dashboard and end-to-end verification
 
-- [ ] Task 3: Curriculum dashboard on `/`
+- [x] Task 3: Curriculum dashboard on `/`
 - [ ] Task 4: Full regression + browser verification
 
 ### Checkpoint: Complete
