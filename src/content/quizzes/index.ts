@@ -8,6 +8,7 @@ import { linuxCliBasicsQuiz } from "./linux-cli-basics-quiz";
 import { powershellBasicsQuiz } from "./powershell-basics-quiz";
 import { identityAccessBasicsQuiz } from "./identity-access-basics-quiz";
 import { appleMdmBasicsQuiz } from "./apple-mdm-basics-quiz";
+import { itsmTicketLifecycleQuiz } from "./itsm-ticket-lifecycle-quiz";
 
 export const quizzes: Record<string, Quiz> = {
   [sampleQuiz.id]: sampleQuiz,
@@ -19,4 +20,5 @@ export const quizzes: Record<string, Quiz> = {
   [powershellBasicsQuiz.id]: powershellBasicsQuiz,
   [identityAccessBasicsQuiz.id]: identityAccessBasicsQuiz,
   [appleMdmBasicsQuiz.id]: appleMdmBasicsQuiz,
+  [itsmTicketLifecycleQuiz.id]: itsmTicketLifecycleQuiz,
 };

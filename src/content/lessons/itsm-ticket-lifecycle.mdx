@@ -1,0 +1,56 @@
+---
+id: itsm-ticket-lifecycle
+moduleId: itsm-ticketing
+title: The Ticket Lifecycle
+order: 1
+summary: How a ticket moves from intake through triage, escalation, and closing.
+quizId: itsm-ticket-lifecycle-quiz
+---
+
+## Intake: where tickets come from
+
+A ticket usually doesn't start with an agent — it starts with a user
+submitting a request, or a monitoring system firing an alert automatically.
+Either way, it lands in the [ticket queue](/glossary/ticket-queue): the
+ordered backlog of open issues waiting to be worked. Intake itself isn't
+really a decision an agent makes; it's just the ticket showing up. The
+real work starts with the next step.
+
+## Triage: assessing what you've got
+
+**Triage** is the first thing a human does with a new ticket: read it,
+figure out roughly how urgent and how complex it is, and categorize it so
+it gets routed and prioritized correctly. A "my monitor won't turn on"
+ticket and a "the whole floor lost network access" ticket both arrive the
+same way, but they shouldn't be worked the same way — triage is where that
+distinction gets made, before any actual troubleshooting begins.
+
+## Escalation: knowing when it's not yours to fix
+
+Not every ticket should stay with the first person who picks it up.
+[Escalation](/glossary/escalation) means handing a ticket to a more senior
+or specialized team once it's clear the current tier can't resolve it —
+not as a last resort after struggling for hours, but as soon as that
+becomes clear. A good escalation includes what's already been tried, so the
+next team isn't starting from zero. Escalating too late wastes the user's
+time; escalating a ticket you could've solved yourself wastes the senior
+team's time. Getting that judgment right is most of what separates a
+strong support agent from a mediocre one.
+
+## Closing: finishing the job properly
+
+Once the underlying problem is actually fixed, a ticket gets closed — but
+closing isn't just clicking a button. Recording the **resolution** (what
+was actually done) matters: the next person who hits a similar issue,
+possibly on a completely different ticket months later, benefits from being
+able to search for how this one was solved. An [SLA](/glossary/sla) often
+measures time-to-close, but a fast close with no useful resolution notes is
+a worse outcome than a slightly slower one that leaves a real trail.
+
+## Practice it
+
+Reading about the lifecycle only gets you so far — walk a real ticket
+through triage, escalation, and closing yourself in the
+[Ticket Console scenario](/consoles/ticket-console-scenario).
+
+<Quiz id="itsm-ticket-lifecycle-quiz" />
