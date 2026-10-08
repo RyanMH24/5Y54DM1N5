@@ -46,15 +46,15 @@ dashboard can render it.
 ### Phase 1: Catalog and state foundation
 
 - [x] Task 1: Typed curriculum catalog + integrity tests
-- [ ] Task 2: Cross-store progress derivation + unit tests
+- [x] Task 2: Cross-store progress derivation + unit tests
 
 ### Checkpoint: Foundation
 
-- [ ] The catalog resolves all 14 real activities once, excludes fixtures, and
+- [x] The catalog resolves all 14 real activities once, excludes fixtures, and
       preserves the spec's exact global order
-- [ ] Empty, partial, out-of-order, corrupted, and complete progress derive the
+- [x] Empty, partial, out-of-order, corrupted, and complete progress derive the
       expected states
-- [ ] Focused sequencing tests, typecheck, and lint pass
+- [x] Focused sequencing tests, typecheck, and lint pass
 
 ### Phase 2: Dashboard and end-to-end verification
 

@@ -17,3 +17,15 @@ export interface CurriculumModule {
   activities: readonly CurriculumActivity[];
 }
 
+export type CurriculumActivityStatus = "completed" | "available" | "locked";
+
+export interface CurriculumActivityState {
+  activity: CurriculumActivity;
+  status: CurriculumActivityStatus;
+}
+
+export interface CurriculumProgress {
+  activities: CurriculumActivityState[];
+  completedCount: number;
+  totalCount: number;
+}

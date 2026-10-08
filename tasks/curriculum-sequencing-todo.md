@@ -6,14 +6,14 @@ Plan: [curriculum-sequencing-plan.md](./curriculum-sequencing-plan.md) · Spec:
 ## Phase 1: Catalog and state foundation
 
 - [x] Task 1: Typed curriculum catalog + integrity tests
-- [ ] Task 2: Cross-store progress derivation + unit tests
+- [x] Task 2: Cross-store progress derivation + unit tests
 
 ### Checkpoint: Foundation
 
-- [ ] Catalog resolves all 14 real activities once in the approved order
-- [ ] Progress states cover empty, partial, out-of-order, corrupted, and
+- [x] Catalog resolves all 14 real activities once in the approved order
+- [x] Progress states cover empty, partial, out-of-order, corrupted, and
       complete storage
-- [ ] Focused tests, typecheck, and lint pass
+- [x] Focused tests, typecheck, and lint pass
 
 ## Phase 2: Dashboard and end-to-end verification
 
