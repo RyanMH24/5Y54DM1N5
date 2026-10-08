@@ -61,17 +61,20 @@ export function CurriculumPath() {
           <p>{module.schedule}</p>
           <ol>
             {module.activities.map((activity) => {
-              const status = stateById.get(activity.id)?.status ?? "locked";
+              const state = stateById.get(activity.id);
+              if (!state) {
+                throw new Error(`Missing curriculum state for activity: ${activity.id}`);
+              }
 
               return (
                 <li key={activity.id}>
                   <span>{kindLabels[activity.kind]}</span>{" "}
-                  {status === "locked" ? (
+                  {state.status === "locked" ? (
                     <span>{activity.title}</span>
                   ) : (
                     <Link href={activity.href}>{activity.title}</Link>
                   )}{" "}
-                  <span>{statusLabels[status]}</span>
+                  <span>{statusLabels[state.status]}</span>
                 </li>
               );
             })}
