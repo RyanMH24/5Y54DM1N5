@@ -1,0 +1,56 @@
+---
+id: identity-access-basics
+moduleId: identity-device-mgmt
+title: Identity & Access Fundamentals
+order: 1
+summary: SSO, what a directory service actually is, and the user provisioning/deprovisioning lifecycle.
+quizId: identity-access-basics-quiz
+---
+
+## SSO, one level deeper
+
+You've already met [SSO](/glossary/sso): log in once, reach every system
+you're authorized for. The piece that makes it work is an **identity
+provider** — a central service that authenticates the user once and then
+vouches for them to every other connected app, instead of each app checking
+a password itself. Products like Okta exist to be that identity provider;
+the concept matters more than any specific vendor's name for it.
+
+## The directory: where identity actually lives
+
+An identity provider still needs to know *who the user is* — their name,
+their email, what team they're on, what groups they belong to. That's the
+job of a **directory service**. On a Windows-centric network that's
+[AD](/glossary/ad) (Active Directory); Microsoft's cloud equivalent is
+Entra ID (formerly Azure AD). Either way, the directory is the source of
+truth: when someone's title changes or they leave the company, you update
+it in the directory, and everything downstream — SSO, app access, [group
+policy](/glossary/gpo) — is supposed to follow from that one update.
+
+## The user lifecycle: provisioning to deprovisioning
+
+When someone joins, an admin (or an automated workflow) **provisions**
+their account: creates it in the directory, assigns them to the right
+groups, and grants access to the apps their role needs. When someone
+leaves, the reverse has to happen — **deprovisioning**: deactivate the
+account, revoke app access, and make sure nothing is left reachable with
+credentials that shouldn't work anymore. Deprovisioning promptly matters as
+much as provisioning correctly; a former employee's still-active account is
+a real security gap, not a theoretical one.
+
+## Why this matters day to day
+
+Most identity tickets fall into one of these buckets: someone can't get
+into something they should have access to (a provisioning or group
+membership problem), someone has access they shouldn't (a deprovisioning
+gap), or SSO itself is misbehaving (the identity provider can't reach an
+app, or vice versa). Knowing which bucket a ticket falls into is most of
+the battle before you even open an admin console.
+
+## Practice it
+
+Reading about the user lifecycle only gets you so far — try provisioning
+and deactivating a real account in the
+[Identity Console scenario](/consoles/identity-console-scenario).
+
+<Quiz id="identity-access-basics-quiz" />

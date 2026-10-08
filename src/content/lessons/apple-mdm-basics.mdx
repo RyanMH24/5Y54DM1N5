@@ -1,0 +1,52 @@
+---
+id: apple-mdm-basics
+moduleId: identity-device-mgmt
+title: Apple MDM Fundamentals
+order: 2
+summary: Enrollment, configuration profiles, and remote lock/wipe for lost devices, from an MDM admin's perspective.
+quizId: apple-mdm-basics-quiz
+---
+
+## What MDM actually does
+
+You've already met [MDM](/glossary/mdm): software that enrolls, configures,
+secures, and monitors [endpoints](/glossary/endpoint) — in this lesson,
+specifically Apple devices like iPhones, iPads, and Macs. Rather than an
+admin walking around setting up every device by hand, MDM lets them push
+configuration, enforce security requirements, and take action on a device
+remotely, at the scale of hundreds or thousands of machines at once.
+
+## Enrollment: how a device joins MDM
+
+Before MDM can manage a device, that device has to be **enrolled** — a
+one-time registration step that establishes a trusted management
+relationship between the device and the MDM platform. Once enrolled, the
+device checks in periodically, applying whatever configuration the admin
+has assigned to it and reporting its status back.
+
+## Configuration profiles: pushing settings at scale
+
+A **configuration profile** is a bundle of settings — Wi-Fi credentials, a
+required passcode policy, which apps should be installed, restrictions on
+what the device can do — that MDM pushes to every device it applies to.
+Instead of configuring each device by hand, an admin builds the profile
+once and assigns it to a group; every device in that group picks it up
+automatically. Updating the profile updates every device that has it.
+
+## When a device is lost: remote lock and wipe
+
+This is where MDM earns its keep operationally. If a managed device is
+reported lost or stolen, an admin can **remote lock** it (require the
+passcode again, immediately, from anywhere) or, if there's real risk to
+company data, **remote wipe** it entirely — erasing its contents over the
+network without physical access to the device. Being able to act within
+minutes of a report, rather than hoping the device is never misused, is the
+whole reason enrollment is worth the upfront effort.
+
+## Practice it
+
+Reading about enrollment and remote actions only gets you so far — try them
+yourself in the
+[Device Console scenario](/consoles/device-console-scenario).
+
+<Quiz id="apple-mdm-basics-quiz" />
