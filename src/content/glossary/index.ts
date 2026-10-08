@@ -1,0 +1,1 @@
+export { terms } from "./terms";
