@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="docs/banner.png" alt="5Y54DM1N5 — SysAdmin Academy" width="800">
+</p>
+
+<p align="center">
+  <a href="https://ryanmh24.github.io/Ryan-M.-Hernandez-Portfolio/5y54dm1n5/"><strong>Try it live</strong></a>
+</p>
+
 # 5Y54DM1N5 — SysAdmin Academy
 
 A self-paced training platform that takes someone from zero to job-ready IT/systems administrator over a six-week path. It pairs short lessons and quizzes with **simulated hands-on practice**: a fake terminal for Linux and PowerShell, and mock admin consoles styled after the tools sysadmins use every day (Okta, Jamf, Active Directory, ServiceNow).
