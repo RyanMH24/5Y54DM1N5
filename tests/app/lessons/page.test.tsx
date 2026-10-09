@@ -11,7 +11,7 @@ describe("Lesson page", () => {
     render(await LessonPage({ params: Promise.resolve({ id: "sample-lesson" }) }));
 
     expect(screen.getByRole("heading", { name: "Sample Lesson", level: 1 })).toBeInTheDocument();
-    expect(screen.queryByText(/Already completed/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Lesson complete/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText("Get-Process"));
     fireEvent.change(screen.getByLabelText("What is the short alias for Get-Process?"), {
@@ -43,6 +43,24 @@ describe("Lesson page", () => {
 
     render(await LessonPage({ params: Promise.resolve({ id: "sample-lesson" }) }));
 
-    expect(screen.getByText("Already completed — score 0/2")).toBeInTheDocument();
+    expect(screen.getByText("Lesson complete — score 0/2")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Next" })).toHaveAttribute("href", "/");
+  });
+
+  it("restarts the lesson, clearing saved progress and resetting the quiz form", async () => {
+    render(await LessonPage({ params: Promise.resolve({ id: "sample-lesson" }) }));
+
+    fireEvent.click(screen.getByLabelText("Get-Service"));
+    fireEvent.change(screen.getByLabelText("What is the short alias for Get-Process?"), {
+      target: { value: "wrong" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Submit" }));
+    expect(screen.getByText("Lesson complete — score 0/2")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Restart" }));
+
+    expect(screen.queryByText(/Lesson complete/)).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Get-Service")).not.toBeChecked();
+    expect(screen.getByLabelText("What is the short alias for Get-Process?")).toHaveValue("");
   });
 });

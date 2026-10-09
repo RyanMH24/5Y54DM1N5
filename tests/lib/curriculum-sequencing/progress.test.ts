@@ -19,10 +19,10 @@ describe("deriveCurriculumProgress", () => {
     const progress = deriveCurriculumProgress(curriculumModules, () => false);
 
     expect(progress.completedCount).toBe(0);
-    expect(progress.totalCount).toBe(14);
+    expect(progress.totalCount).toBe(27);
     expect(progress.activities.map(({ status }) => status)).toEqual([
       "available",
-      ...Array.from({ length: 13 }, () => "locked"),
+      ...Array.from({ length: 26 }, () => "locked"),
     ]);
   });
 
@@ -50,16 +50,16 @@ describe("deriveCurriculumProgress", () => {
 
     expect(progress.activities[0].status).toBe("available");
     expect(progress.activities[1].status).toBe("completed");
-    expect(progress.activities[5].status).toBe("completed");
+    expect(progress.activities[7].status).toBe("completed");
     expect(progress.activities[2].status).toBe("locked");
-    expect(progress.activities[6].status).toBe("locked");
+    expect(progress.activities[8].status).toBe("locked");
   });
 
   it("marks a fully completed path with no available or locked activities", () => {
     const progress = deriveCurriculumProgress(curriculumModules, () => true);
 
-    expect(progress.completedCount).toBe(14);
-    expect(progress.totalCount).toBe(14);
+    expect(progress.completedCount).toBe(27);
+    expect(progress.totalCount).toBe(27);
     expect(progress.activities.every(({ status }) => status === "completed")).toBe(true);
   });
 });
@@ -87,8 +87,8 @@ describe("readActivityCompletion", () => {
     });
 
     expect(readActivityCompletion(activities[0])).toBe(true);
-    expect(readActivityCompletion(activities[5])).toBe(true);
-    expect(readActivityCompletion(activities[9])).toBe(true);
+    expect(readActivityCompletion(activities[7])).toBe(true);
+    expect(readActivityCompletion(activities[15])).toBe(true);
   });
 
   it("treats missing, incomplete, and corrupted records as incomplete", () => {
@@ -105,7 +105,7 @@ describe("readActivityCompletion", () => {
     );
 
     expect(readActivityCompletion(activities[0])).toBe(false);
-    expect(readActivityCompletion(activities[5])).toBe(false);
-    expect(readActivityCompletion(activities[9])).toBe(false);
+    expect(readActivityCompletion(activities[7])).toBe(false);
+    expect(readActivityCompletion(activities[15])).toBe(false);
   });
 });

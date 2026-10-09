@@ -11,10 +11,14 @@ export default function GlossaryPage() {
   const [query, setQuery] = useState("");
 
   return (
-    <main>
-      <h1>Glossary</h1>
-      <GlossarySearch value={query} onChange={setQuery} />
-      <GlossaryList terms={searchTerms(allTerms, query)} />
+    <main className="game-sky min-h-screen px-4 py-10 sm:px-6 sm:py-14">
+      <div className="mx-auto max-w-2xl">
+        <h1 className="text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">
+          Glossary
+        </h1>
+        <GlossarySearch value={query} onChange={setQuery} />
+        <GlossaryList terms={searchTerms(allTerms, query)} />
+      </div>
     </main>
   );
 }

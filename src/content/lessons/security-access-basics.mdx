@@ -1,0 +1,48 @@
+---
+id: security-access-basics
+moduleId: security-fundamentals
+title: Security & Access Basics
+order: 1
+summary: Password hygiene, MFA, and least privilege — the three habits behind most practical account security.
+quizId: security-access-basics-quiz
+---
+
+## Why passwords alone aren't enough
+
+A password is a single piece of knowledge — and anything a person knows,
+a person can also be tricked into revealing, or have stolen through a
+data breach at some unrelated service they reused the password on.
+That's the gap [MFA](/glossary/mfa) closes: by requiring a second,
+different kind of proof — a one-time code from an app, a push
+notification, a hardware key — a stolen password alone stops being
+enough to get in.
+
+## Least privilege in practice
+
+[Least privilege](/glossary/least-privilege) means giving an account only
+the access it needs for its actual job, not the broadest access that
+would also happen to work. A help desk account doesn't need domain admin
+rights to reset passwords; a reporting script doesn't need write access to
+run a read-only query. The benefit shows up when something goes wrong: a
+compromised least-privilege account can only do limited damage, while a
+compromised over-privileged one can do a lot.
+
+## Password hygiene that actually holds up
+
+Length matters more than cleverness — a long passphrase is harder to
+crack than a short password with a symbol swapped in. The habit that
+matters most, though, is never reusing a password across sites: one
+breached, low-security site shouldn't be able to compromise a work
+account just because the same password was used on both. A password
+manager makes unique passwords practical by removing the need to
+memorize them.
+
+## Why this matters day to day
+
+Most account-compromise tickets trace back to one of these three gaps:
+no MFA on an account that should have had it, a password reused from a
+breached site, or an account holding more access than its role justified.
+Closing all three before an incident happens is far cheaper than cleaning
+up after one.
+
+<Quiz id="security-access-basics-quiz" />

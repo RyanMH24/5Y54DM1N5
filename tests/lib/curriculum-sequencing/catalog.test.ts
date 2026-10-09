@@ -10,39 +10,54 @@ const expectedActivityIds = [
   "hardware-troubleshooting",
   "terminology",
   "linux-cli-basics",
+  "linux-users-permissions",
+  "linux-package-management",
   "linux-cli-basics-lab",
+  "linux-console-scenario",
   "powershell-basics",
+  "powershell-scripting-basics",
+  "powershell-ad-user-management",
   "powershell-basics-lab",
+  "ad-console-scenario",
   "identity-access-basics",
   "identity-console-scenario",
   "apple-mdm-basics",
   "device-console-scenario",
+  "security-access-basics",
+  "phishing-social-engineering",
+  "endpoint-security-basics",
+  "security-console-scenario",
+  "cloud-virtualization-basics",
+  "backup-disaster-recovery-basics",
+  "cloud-backup-console-scenario",
   "itsm-ticket-lifecycle",
   "ticket-console-scenario",
 ];
 
 describe("curriculum catalog", () => {
-  it("declares the approved four-module, six-week path", () => {
+  it("declares the approved six-module, six-week path", () => {
     expect(
       curriculumModules.map(({ id, title, schedule }) => ({ id, title, schedule })),
     ).toEqual([
       { id: "core-fundamentals", title: "Core Fundamentals", schedule: "Week 1" },
-      { id: "linux-powershell", title: "Linux & PowerShell", schedule: "Weeks 2–3" },
+      { id: "linux-fundamentals", title: "Linux", schedule: "Week 2" },
+      { id: "powershell-fundamentals", title: "PowerShell", schedule: "Week 3" },
       {
         id: "identity-device-mgmt",
         title: "Identity & Device Management",
-        schedule: "Weeks 4–5",
+        schedule: "Week 4",
       },
-      { id: "itsm-ticketing", title: "ITSM & Ticketing", schedule: "Week 6" },
+      { id: "security-fundamentals", title: "Security Fundamentals", schedule: "Week 5" },
+      { id: "cloud-backup-itsm", title: "Cloud, Backup & ITSM", schedule: "Week 6" },
     ]);
   });
 
-  it("contains all 14 real activities once in the approved order", () => {
+  it("contains all 27 real activities once in the approved order", () => {
     const activities = flattenCurriculum(curriculumModules);
 
     expect(activities.map((activity) => activity.id)).toEqual(expectedActivityIds);
-    expect(new Set(activities.map((activity) => activity.id)).size).toBe(14);
-    expect(new Set(activities.map((activity) => activity.href)).size).toBe(14);
+    expect(new Set(activities.map((activity) => activity.id)).size).toBe(27);
+    expect(new Set(activities.map((activity) => activity.href)).size).toBe(27);
     expect(activities.map((activity) => activity.id)).not.toEqual(
       expect.arrayContaining(["sample-lesson", "sample-lab", "demo-scenario"]),
     );

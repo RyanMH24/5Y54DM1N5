@@ -1,0 +1,53 @@
+---
+id: backup-disaster-recovery-basics
+moduleId: cloud-backup-itsm
+title: Backup & Disaster Recovery Basics
+order: 2
+summary: Backup types, the 3-2-1 rule, and the two numbers (RTO/RPO) that actually define a recovery plan.
+quizId: backup-disaster-recovery-basics-quiz
+---
+
+## Backup types
+
+A **full backup** copies everything, every time — simplest to restore
+from, slowest and most storage-hungry to create. An **incremental backup**
+copies only what changed since the last backup (of any kind) — fast and
+small, but restoring means replaying the full backup plus every
+incremental since it, in order. A **differential backup** copies everything
+changed since the last *full* backup — a middle ground: faster to restore
+than a long incremental chain, more storage than an incremental.
+
+## The 3-2-1 rule
+
+A widely used rule of thumb: keep **3** copies of your data, on **2**
+different types of media, with **1** copy offsite. The reasoning behind
+each number matters more than the rule itself — one copy is no backup at
+all (a single failure destroys everything), copies on identical media can
+fail the same way at the same time, and a backup stored in the same
+building as the original doesn't survive a fire or flood that takes out
+the building.
+
+## RTO and RPO: the two numbers that define a recovery plan
+
+[RTO](/glossary/rto) (Recovery Time Objective) is how long the business
+can tolerate a system being down. [RPO](/glossary/rpo) (Recovery Point
+Objective) is how much data loss — measured in time since the last good
+backup — is acceptable. A system backed up nightly has an RPO of up to 24
+hours: if it fails at 11pm, you lose a full day's work restoring last
+night's backup. These two numbers, not vague goals like "back it up
+regularly," are what an actual disaster recovery plan is built around.
+
+## Why this matters day to day
+
+"We have backups" isn't the same as "we have a recovery plan" — a backup
+nobody has ever tried restoring from is an unverified assumption, not a
+safety net. The questions that actually matter are: how often do we back
+up (does that match our RPO), how long would a real restore take (does
+that match our RTO), and when did we last actually test it.
+
+## Practice it
+
+Reading about recovering a failed backup only gets you so far — try it
+yourself in the [Cloud Console scenario](/consoles/cloud-backup-console-scenario).
+
+<Quiz id="backup-disaster-recovery-basics-quiz" />

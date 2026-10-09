@@ -81,6 +81,18 @@ describe("Console page", () => {
     expect(screen.getByText(/Jordan Lee's account needs to be suspended/)).toBeInTheDocument();
   });
 
+  it("restarts the scenario back to the first task and clears saved progress", async () => {
+    render(await ConsolePage({ params: Promise.resolve({ id: "demo-scenario" }) }));
+
+    completeDemoScenario();
+    expect(screen.getByRole("status")).toHaveTextContent("Scenario complete!");
+
+    fireEvent.click(screen.getByRole("button", { name: "Restart" }));
+
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(screen.getByText(/Jordan Lee's account needs to be suspended/)).toBeInTheDocument();
+  });
+
   it("calls notFound for an unknown scenario id", async () => {
     await expect(
       ConsolePage({ params: Promise.resolve({ id: "does-not-exist" }) }),

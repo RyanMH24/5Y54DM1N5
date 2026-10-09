@@ -1,0 +1,51 @@
+---
+id: powershell-ad-user-management
+moduleId: powershell-fundamentals
+title: Managing AD Users with PowerShell
+order: 3
+summary: The ActiveDirectory module cmdlets for finding, creating, and disabling user accounts.
+quizId: powershell-ad-user-management-quiz
+---
+
+## The ActiveDirectory module
+
+PowerShell's `ActiveDirectory` module adds cmdlets for working directly
+with [AD](/glossary/ad) — the same directory service covered in Identity &
+Access Fundamentals, now from the command line instead of a GUI console.
+These cmdlets follow the same `Verb-Noun` pattern as everything else in
+PowerShell, so `Get-ADUser`, `New-ADUser`, and `Disable-ADUser` all do
+roughly what their names suggest.
+
+## Finding and inspecting users
+
+`Get-ADUser -Filter *` lists every user in the directory; narrowing with
+`-Filter "Name -like 'j*'"` finds just the ones whose name starts with
+"j". Piping the result into `Select-Object` picks out specific
+properties: `Get-ADUser -Identity jsmith -Properties * | Select-Object
+Name, LastLogonDate` shows exactly the fields you need instead of a wall of
+output.
+
+## Creating and disabling accounts
+
+`New-ADUser -Name "Jane Smith" -SamAccountName jsmith -Enabled $true`
+provisions a new account — the scripted version of the onboarding step
+covered in Identity & Access Fundamentals. Offboarding works the same way
+in reverse: `Disable-ADUser -Identity jsmith` immediately blocks that
+account from authenticating anywhere, without deleting it — useful when a
+departing employee's access needs to be cut off right away, but their
+account and its history might still need to be reviewed first.
+
+## Why this matters day to day
+
+Doing this by hand in a GUI console doesn't scale past a handful of
+accounts. A script built around `Get-ADUser`, `New-ADUser`, and
+`Disable-ADUser` turns a batch onboarding of twenty new hires, or an
+emergency mass-disable during an incident, into something that runs in
+seconds instead of taking an afternoon of repetitive clicking.
+
+## Practice it
+
+Reading about onboarding a new hire only gets you so far — try it yourself
+in the [AD Console scenario](/consoles/ad-console-scenario).
+
+<Quiz id="powershell-ad-user-management-quiz" />

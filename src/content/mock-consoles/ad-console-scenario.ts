@@ -1,0 +1,195 @@
+import type { MockConsoleScenario } from "@/types/mock-console";
+
+export const adConsoleScenario: MockConsoleScenario = {
+  id: "ad-console-scenario",
+  title: "AD Console — Guided Scenario",
+  productName: "AD Console",
+  sections: [
+    {
+      id: "users",
+      label: "Users",
+      records: [
+        {
+          id: "user-jordan",
+          title: "Jordan Alvarez — New Hire, IT Department, starts Monday",
+          fields: {
+            accountStatus: "Not Created",
+            passwordStatus: "Not Set",
+            groupMembership: "None",
+            mailbox: "Not Provisioned",
+            enabledStatus: "Disabled",
+            deviceStatus: "Not Assigned",
+            vpnAccess: "Not Granted",
+            distributionList: "Not Added",
+            mfaStatus: "Not Enrolled",
+            welcomeTicket: "Not Sent",
+            onboardingStatus: "In Progress",
+          },
+        },
+      ],
+    },
+  ],
+  actions: [
+    {
+      id: "create-account-jordan",
+      label: "Create AD Account",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { accountStatus: "Created" },
+    },
+    {
+      id: "set-temp-password-jordan",
+      label: "Set Temporary Password",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { passwordStatus: "Temporary Password Set" },
+    },
+    {
+      id: "add-to-group-jordan",
+      label: "Add to IT Department Group",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { groupMembership: "IT Department" },
+    },
+    {
+      id: "provision-mailbox-jordan",
+      label: "Provision Mailbox",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { mailbox: "Provisioned" },
+    },
+    {
+      id: "enable-account-jordan",
+      label: "Enable Account",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { enabledStatus: "Enabled" },
+    },
+    {
+      id: "assign-device-jordan",
+      label: "Assign Device",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { deviceStatus: "Assigned" },
+    },
+    {
+      id: "grant-vpn-jordan",
+      label: "Grant VPN Access",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { vpnAccess: "Granted" },
+    },
+    {
+      id: "add-distribution-list-jordan",
+      label: "Add to Distribution List",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { distributionList: "IT Department" },
+    },
+    {
+      id: "enroll-mfa-jordan",
+      label: "Enroll in MFA",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { mfaStatus: "Enrolled" },
+    },
+    {
+      id: "send-welcome-ticket-jordan",
+      label: "Send Welcome Ticket",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { welcomeTicket: "Sent" },
+    },
+    {
+      id: "complete-onboarding-jordan",
+      label: "Complete Onboarding Checklist",
+      sectionId: "users",
+      recordId: "user-jordan",
+      updates: { onboardingStatus: "Complete" },
+    },
+  ],
+  tasks: [
+    {
+      id: "task-create-account-jordan",
+      instructions: "Jordan Alvarez starts Monday in IT. Create their Active Directory account.",
+      expectedActionId: "create-account-jordan",
+      successMessage: "Jordan Alvarez's AD account has been created.",
+      fallbackMessage:
+        "That doesn't create the account. Select Jordan Alvarez and choose Create AD Account.",
+    },
+    {
+      id: "task-set-temp-password-jordan",
+      instructions:
+        "The account needs a password before Jordan can log in for the first time. Set a temporary password.",
+      expectedActionId: "set-temp-password-jordan",
+      successMessage: "A temporary password has been set for Jordan Alvarez.",
+      fallbackMessage: "That's not it. Select Jordan Alvarez and choose Set Temporary Password.",
+    },
+    {
+      id: "task-add-to-group-jordan",
+      instructions: "Jordan needs access to IT Department resources. Add them to the IT Department group.",
+      expectedActionId: "add-to-group-jordan",
+      successMessage: "Jordan Alvarez has been added to the IT Department group.",
+      fallbackMessage:
+        "That doesn't add them to the group. Select Jordan Alvarez and choose Add to IT Department Group.",
+    },
+    {
+      id: "task-provision-mailbox-jordan",
+      instructions: "Jordan will need email on day one. Provision their mailbox.",
+      expectedActionId: "provision-mailbox-jordan",
+      successMessage: "Jordan Alvarez's mailbox has been provisioned.",
+      fallbackMessage: "That's not it. Select Jordan Alvarez and choose Provision Mailbox.",
+    },
+    {
+      id: "task-enable-account-jordan",
+      instructions: "Everything is in place. Enable the account so Jordan can sign in Monday morning.",
+      expectedActionId: "enable-account-jordan",
+      successMessage: "Jordan Alvarez's account has been enabled.",
+      fallbackMessage: "That doesn't enable the account. Select Jordan Alvarez and choose Enable Account.",
+    },
+    {
+      id: "task-assign-device-jordan",
+      instructions: "Jordan needs a laptop waiting for them Monday. Assign a device.",
+      expectedActionId: "assign-device-jordan",
+      successMessage: "A device has been assigned to Jordan Alvarez.",
+      fallbackMessage: "That doesn't assign a device. Select Jordan Alvarez and choose Assign Device.",
+    },
+    {
+      id: "task-grant-vpn-jordan",
+      instructions: "Jordan will need to connect remotely sometimes. Grant VPN access.",
+      expectedActionId: "grant-vpn-jordan",
+      successMessage: "VPN access has been granted to Jordan Alvarez.",
+      fallbackMessage: "That's not it. Select Jordan Alvarez and choose Grant VPN Access.",
+    },
+    {
+      id: "task-add-distribution-list-jordan",
+      instructions: "Add Jordan to the IT Department distribution list so they get team announcements.",
+      expectedActionId: "add-distribution-list-jordan",
+      successMessage: "Jordan Alvarez has been added to the IT Department distribution list.",
+      fallbackMessage:
+        "That doesn't add them to a distribution list. Select Jordan Alvarez and choose Add to Distribution List.",
+    },
+    {
+      id: "task-enroll-mfa-jordan",
+      instructions: "Enroll Jordan's account in MFA before they sign in for the first time.",
+      expectedActionId: "enroll-mfa-jordan",
+      successMessage: "Jordan Alvarez's account has been enrolled in MFA.",
+      fallbackMessage: "That doesn't enroll MFA. Select Jordan Alvarez and choose Enroll in MFA.",
+    },
+    {
+      id: "task-send-welcome-ticket-jordan",
+      instructions: "Send Jordan a welcome ticket with their first-day instructions.",
+      expectedActionId: "send-welcome-ticket-jordan",
+      successMessage: "A welcome ticket has been sent to Jordan Alvarez.",
+      fallbackMessage: "That's not it. Select Jordan Alvarez and choose Send Welcome Ticket.",
+    },
+    {
+      id: "task-complete-onboarding-jordan",
+      instructions: "Everything is in place. Mark the onboarding checklist complete.",
+      expectedActionId: "complete-onboarding-jordan",
+      successMessage: "Jordan Alvarez's onboarding checklist is complete.",
+      fallbackMessage:
+        "That doesn't complete onboarding. Select Jordan Alvarez and choose Complete Onboarding Checklist.",
+    },
+  ],
+};

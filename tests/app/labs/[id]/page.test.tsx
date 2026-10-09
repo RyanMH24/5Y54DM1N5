@@ -79,6 +79,20 @@ describe("Lab page", () => {
     expect(screen.getByText("List the files in the current directory.")).toBeInTheDocument();
   });
 
+  it("restarts the lab back to the first step and clears saved progress", async () => {
+    render(await LabPage({ params: Promise.resolve({ id: "sample-lab" }) }));
+
+    runCommand("ls");
+    runCommand("pwd");
+    runCommand("whoami");
+    expect(screen.getByText(/lab complete/i)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Restart" }));
+
+    expect(screen.queryByText(/lab complete/i)).not.toBeInTheDocument();
+    expect(screen.getByText("List the files in the current directory.")).toBeInTheDocument();
+  });
+
   it("calls notFound for an unknown lab id", async () => {
     await expect(
       LabPage({ params: Promise.resolve({ id: "does-not-exist" }) }),

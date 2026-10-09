@@ -50,12 +50,13 @@ describe("Terminal", () => {
     expect(screen.getByText("List files.")).toBeInTheDocument();
   });
 
-  it("shows a completion state after the last step's command matches", () => {
+  it("shows a completion state with a Next link back to the home page after the last step's command matches", () => {
     render(<Terminal lab={lab} />);
     runCommand("ls");
     runCommand("pwd");
 
     expect(screen.getByRole("status")).toHaveTextContent(/lab complete/i);
+    expect(screen.getByRole("link", { name: "Next" })).toHaveAttribute("href", "/");
   });
 
   it("calls onProgress with the updated step index and completion state", () => {
@@ -82,5 +83,18 @@ describe("Terminal", () => {
   it("starts in the completed state when resuming an already-completed lab", () => {
     render(<Terminal lab={lab} initialProgress={{ currentStepIndex: 2, completed: true }} />);
     expect(screen.getByText(/lab complete/i)).toBeInTheDocument();
+  });
+
+  it("omits the Restart button when onRestart isn't provided", () => {
+    render(<Terminal lab={lab} />);
+    expect(screen.queryByRole("button", { name: "Restart" })).not.toBeInTheDocument();
+  });
+
+  it("renders a Restart button that calls onRestart, available even before the lab is complete", () => {
+    const onRestart = vi.fn();
+    render(<Terminal lab={lab} onRestart={onRestart} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Restart" }));
+    expect(onRestart).toHaveBeenCalledOnce();
   });
 });

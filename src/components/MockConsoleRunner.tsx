@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import type { MockConsoleProgress as StoredProgress } from "@/types/mock-console";
 import { getScenarioById } from "@/lib/mock-console/load";
-import { loadConsoleProgress, saveConsoleProgress } from "@/lib/mock-console/progress";
+import { clearConsoleProgress, loadConsoleProgress, saveConsoleProgress } from "@/lib/mock-console/progress";
 import { MockConsole, type MockConsoleProgress } from "./MockConsole";
 
 interface MockConsoleRunnerProps {
@@ -46,6 +46,7 @@ export function MockConsoleRunner({ scenarioId }: MockConsoleRunnerProps) {
     getServerProgressSnapshot,
   );
   const [submittedProgress, setSubmittedProgress] = useState<StoredProgress | null>(null);
+  const [attempt, setAttempt] = useState(0);
   const progress = submittedProgress ?? storedProgress;
   const canResume =
     progress !== null &&
@@ -63,12 +64,19 @@ export function MockConsoleRunner({ scenarioId }: MockConsoleRunnerProps) {
     setSubmittedProgress(record);
   }
 
+  function handleRestart() {
+    clearConsoleProgress(scenarioId);
+    setSubmittedProgress(null);
+    setAttempt((value) => value + 1);
+  }
+
   return (
     <MockConsole
-      key={isHydrated ? "hydrated" : "loading"}
+      key={`${isHydrated ? "hydrated" : "loading"}-${attempt}`}
       scenario={scenario}
       initialTaskIndex={canResume ? progress.currentTaskIndex : undefined}
       onProgress={handleProgress}
+      onRestart={handleRestart}
     />
   );
 }

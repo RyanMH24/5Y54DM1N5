@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import type { TerminalLabProgress } from "@/types/terminal-lab";
 import { getLabById } from "@/lib/terminal-lab/load";
-import { loadLabProgress, saveLabProgress } from "@/lib/terminal-lab/progress";
+import { clearLabProgress, loadLabProgress, saveLabProgress } from "@/lib/terminal-lab/progress";
 import { Terminal, type TerminalProgress } from "./Terminal";
 
 interface LabRunnerProps {
@@ -46,6 +46,7 @@ export function LabRunner({ labId }: LabRunnerProps) {
     getServerProgressSnapshot,
   );
   const [submittedProgress, setSubmittedProgress] = useState<TerminalLabProgress | null>(null);
+  const [attempt, setAttempt] = useState(0);
   const progress = submittedProgress ?? storedProgress;
   const canResume =
     progress !== null &&
@@ -63,9 +64,15 @@ export function LabRunner({ labId }: LabRunnerProps) {
     setSubmittedProgress(record);
   }
 
+  function handleRestart() {
+    clearLabProgress(labId);
+    setSubmittedProgress(null);
+    setAttempt((value) => value + 1);
+  }
+
   return (
     <Terminal
-      key={isHydrated ? "hydrated" : "loading"}
+      key={`${isHydrated ? "hydrated" : "loading"}-${attempt}`}
       lab={lab}
       initialProgress={
         canResume
@@ -73,6 +80,7 @@ export function LabRunner({ labId }: LabRunnerProps) {
           : undefined
       }
       onProgress={handleProgress}
+      onRestart={handleRestart}
     />
   );
 }

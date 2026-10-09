@@ -1,0 +1,49 @@
+---
+id: linux-users-permissions
+moduleId: linux-fundamentals
+title: Linux Users & Permissions
+order: 2
+summary: Who owns a file, who can do what with it, and the commands for managing users and groups.
+quizId: linux-users-permissions-quiz
+---
+
+## Ownership: every file belongs to someone
+
+Every file and directory in Linux has exactly one owning user and one
+owning group. `ls -la` shows both, right before the file size — something
+like `rydez staff` means the user `rydez` owns the file and the group
+`staff` also has a claim on it. `chown` changes the owning user (and
+optionally group); `chgrp` changes just the group.
+
+## Reading permission bits
+
+The `rwxr-xr--` string at the start of an `ls -la` line breaks into three
+sets of three: owner, group, and everyone else. Each set is **r**ead,
+**w**rite, **x**ecute — present if the letter shows, absent if it's a dash.
+`chmod` sets these, usually with octal shorthand: read=4, write=2,
+execute=1, added together per set. `chmod 755 script.sh` means the owner
+gets 7 (4+2+1, full access), group and others get 5 (4+1, read and execute
+but not write) — a very common pattern for scripts other people need to
+run but not edit.
+
+## Managing users and groups
+
+`useradd` creates a new user account; `passwd` sets or changes a password.
+`usermod -aG groupname username` adds an existing user to a group without
+removing them from their current ones — leaving off `-a` would replace
+their group memberships entirely, which is rarely what you want.
+`groupadd` creates a new group. `sudo` lets a permitted user run a single
+command with administrator (root) privileges, which is how most of these
+commands actually get run day to day.
+
+## Why this matters day to day
+
+"I can't open this file" and "the script won't run" are two of the most
+common permission tickets you'll see, and both usually trace back to one
+of three things: wrong owner, wrong permission bits, or the user isn't in
+the group that's supposed to grant access. Following [least
+privilege](/glossary/least-privilege) — granting the narrowest access that
+still gets the job done — keeps these issues rare and makes the ones that
+do happen easy to reason about.
+
+<Quiz id="linux-users-permissions-quiz" />

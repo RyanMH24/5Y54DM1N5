@@ -68,4 +68,56 @@ export const terms: GlossaryTerm[] = [
     definition:
       "The system that translates human-readable names (like example.com) into the IP addresses computers use to find each other.",
   },
+  {
+    id: "mfa",
+    term: "MFA",
+    acronymFor: "Multi-Factor Authentication",
+    definition:
+      "A login method that requires at least two kinds of proof of identity — like a password plus a one-time code — so a single stolen credential isn't enough to get in.",
+  },
+  {
+    id: "least-privilege",
+    term: "Least Privilege",
+    definition:
+      "The principle of giving a user or system only the access it needs to do its job, and nothing more.",
+  },
+  {
+    id: "phishing",
+    term: "Phishing",
+    definition:
+      "A social-engineering attack that tricks someone into revealing credentials or installing malware, usually via a fake email, text, or website impersonating something trustworthy.",
+  },
+  {
+    id: "hypervisor",
+    term: "Hypervisor",
+    definition:
+      "Software that creates and runs virtual machines by sharing one physical machine's CPU, memory, and storage among them.",
+  },
+  {
+    id: "vm",
+    term: "VM",
+    acronymFor: "Virtual Machine",
+    definition:
+      "A software-emulated computer running on a hypervisor, isolated from other VMs sharing the same physical hardware.",
+  },
+  {
+    id: "rto",
+    term: "RTO",
+    acronymFor: "Recovery Time Objective",
+    definition:
+      "The maximum acceptable time to restore a system after an outage before the business impact becomes unacceptable.",
+  },
+  {
+    id: "rpo",
+    term: "RPO",
+    acronymFor: "Recovery Point Objective",
+    definition:
+      "The maximum acceptable amount of data loss, measured in time since the last backup — i.e. how much work you can afford to redo.",
+  },
+  {
+    id: "patch-management",
+    term: "Patch Management",
+    definition:
+      "The ongoing process of applying vendor updates to fix security vulnerabilities and bugs across an organization's systems.",
+  },
 ];

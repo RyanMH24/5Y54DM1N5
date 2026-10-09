@@ -1,10 +1,11 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import HomePage from "@/app/page";
 import { curriculumModules, flattenCurriculum } from "@/content/curriculum/path";
 import { saveProgress } from "@/lib/progress/storage";
 import { saveLabProgress } from "@/lib/terminal-lab/progress";
 import { saveConsoleProgress } from "@/lib/mock-console/progress";
+import { hasSeenCompletionNotice } from "@/lib/curriculum-sequencing/completion-notice";
 import type { CurriculumActivity } from "@/types/curriculum-sequencing";
 
 const activities = flattenCurriculum(curriculumModules);
@@ -44,9 +45,16 @@ describe("Home page curriculum dashboard", () => {
     render(<HomePage />);
 
     expect(screen.getByRole("heading", { name: "Sysadmin Academy", level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole("status")).toHaveTextContent("0/14 complete");
+    expect(screen.getByRole("status")).toHaveTextContent("0/27 complete");
     expect(screen.getAllByRole("heading", { level: 2 }).map(({ textContent }) => textContent)).toEqual(
-      ["Core Fundamentals", "Linux & PowerShell", "Identity & Device Management", "ITSM & Ticketing"],
+      [
+        "Core Fundamentals",
+        "Linux",
+        "PowerShell",
+        "Identity & Device Management",
+        "Security Fundamentals",
+        "Cloud, Backup & ITSM",
+      ],
     );
     expect(screen.getByRole("link", { name: "Networking Basics" })).toHaveAttribute(
       "href",
@@ -54,16 +62,16 @@ describe("Home page curriculum dashboard", () => {
     );
     expect(screen.queryByRole("link", { name: "OS Fundamentals" })).not.toBeInTheDocument();
     expect(screen.getAllByText("Up next")).toHaveLength(1);
-    expect(screen.getAllByText("Locked")).toHaveLength(13);
+    expect(screen.getAllByText("Locked")).toHaveLength(26);
   });
 
   it("reflects a consecutive prefix completed across lesson, lab, and console stores", () => {
-    activities.slice(0, 10).forEach(completeActivity);
+    activities.slice(0, 16).forEach(completeActivity);
 
     render(<HomePage />);
 
-    expect(screen.getByRole("status")).toHaveTextContent("10/14 complete");
-    expect(screen.getAllByText("Completed")).toHaveLength(10);
+    expect(screen.getByRole("status")).toHaveTextContent("16/27 complete");
+    expect(screen.getAllByText("Completed")).toHaveLength(16);
     expect(screen.getByRole("link", { name: "Apple MDM Fundamentals" })).toHaveAttribute(
       "href",
       "/lessons/apple-mdm-basics",
@@ -79,7 +87,7 @@ describe("Home page curriculum dashboard", () => {
     const completedItem = screen.getByText("OS Fundamentals").closest("li");
     const lockedItem = screen.getByText("Hardware & Troubleshooting").closest("li");
 
-    expect(screen.getByRole("status")).toHaveTextContent("1/14 complete");
+    expect(screen.getByRole("status")).toHaveTextContent("1/27 complete");
     expect(screen.getByRole("link", { name: "Networking Basics" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "OS Fundamentals" })).toBeInTheDocument();
     expect(within(completedItem!).getByText("Completed")).toBeInTheDocument();
@@ -92,9 +100,28 @@ describe("Home page curriculum dashboard", () => {
 
     render(<HomePage />);
 
-    expect(screen.getByRole("status")).toHaveTextContent("14/14 complete");
+    expect(screen.getByRole("status")).toHaveTextContent("27/27 complete");
     expect(screen.getByText("Curriculum complete")).toBeInTheDocument();
     expect(screen.queryByText("Up next")).not.toBeInTheDocument();
     expect(screen.queryByText("Locked")).not.toBeInTheDocument();
+  });
+
+  it("pops up a completion notice the first time every activity is complete, then remembers it was dismissed", () => {
+    activities.forEach(completeActivity);
+
+    const { unmount } = render(<HomePage />);
+
+    expect(screen.getByRole("alertdialog", { name: "Curriculum complete!" })).toBeInTheDocument();
+    expect(hasSeenCompletionNotice()).toBe(false);
+
+    fireEvent.click(screen.getByRole("button", { name: "Nice!" }));
+
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+    expect(hasSeenCompletionNotice()).toBe(true);
+    unmount();
+
+    render(<HomePage />);
+
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 });

@@ -1,0 +1,56 @@
+---
+id: powershell-scripting-basics
+moduleId: powershell-fundamentals
+title: PowerShell Scripting Basics
+order: 2
+summary: Variables, conditionals, and loops — turning one-off cmdlets into a repeatable script.
+quizId: powershell-scripting-basics-quiz
+---
+
+## From one command to a script
+
+A single cmdlet solves a single problem; a script chains several together
+to solve a recurring one. PowerShell scripts live in `.ps1` files and run
+with `.\script.ps1` — the leading `.\` is required so PowerShell doesn't
+mistake a script in the current folder for a system command of the same
+name.
+
+## Variables and conditionals
+
+A variable starts with `$`: `$name = "web-01"` stores a value you can
+reuse. Conditionals use `if`/`elseif`/`else`, same shape as most scripting
+languages:
+
+```powershell
+if ($service.Status -ne "Running") {
+    Start-Service -Name $service.Name
+}
+```
+
+This checks a service's status and only starts it if it isn't already
+running — the kind of guard real scripts use constantly to avoid redoing
+work or acting on the wrong state.
+
+## Loops: repeating an action over a list
+
+`foreach` runs a block once per item in a collection:
+
+```powershell
+foreach ($server in Get-Content servers.txt) {
+    Test-Connection -ComputerName $server -Count 1
+}
+```
+
+This reads a list of server names from a text file and pings each one —
+replacing what would otherwise be a manual, repetitive check across dozens
+of machines with a script that takes seconds to run.
+
+## Why this matters day to day
+
+The moment you're repeating the same cmdlet against more than a handful of
+targets — restart a service on ten machines, check disk space on every
+server in a group — that's the signal to write a script instead of typing
+the command by hand each time. The time spent writing it pays for itself
+the second time you need to run it.
+
+<Quiz id="powershell-scripting-basics-quiz" />

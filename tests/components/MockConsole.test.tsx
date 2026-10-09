@@ -118,7 +118,7 @@ describe("MockConsole", () => {
     expect(onProgress).not.toHaveBeenCalled();
   });
 
-  it("shows a completion state after the final task's expected action", () => {
+  it("shows a completion state with a Next link back to the home page after the final task's expected action", () => {
     render(<MockConsole scenario={scenario} />);
 
     selectRecord("User One");
@@ -127,10 +127,24 @@ describe("MockConsole", () => {
     fireEvent.click(screen.getByRole("button", { name: "Promote" }));
 
     expect(screen.getByRole("status")).toHaveTextContent("Scenario complete!");
+    expect(screen.getByRole("link", { name: "Next" })).toHaveAttribute("href", "/");
   });
 
   it("starts from initialTaskIndex when resuming", () => {
     render(<MockConsole scenario={scenario} initialTaskIndex={1} />);
     expect(screen.getByText("Promote user two.")).toBeInTheDocument();
+  });
+
+  it("omits the Restart button when onRestart isn't provided", () => {
+    render(<MockConsole scenario={scenario} />);
+    expect(screen.queryByRole("button", { name: "Restart" })).not.toBeInTheDocument();
+  });
+
+  it("renders a Restart button that calls onRestart, available even before the scenario is complete", () => {
+    const onRestart = vi.fn();
+    render(<MockConsole scenario={scenario} onRestart={onRestart} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Restart" }));
+    expect(onRestart).toHaveBeenCalledOnce();
   });
 });

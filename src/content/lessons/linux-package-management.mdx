@@ -1,0 +1,52 @@
+---
+id: linux-package-management
+moduleId: linux-fundamentals
+title: Linux Package Management
+order: 3
+summary: How software gets installed, updated, and removed on Linux, and why it looks different across distributions.
+quizId: linux-package-management-quiz
+---
+
+## Packages and package managers
+
+Instead of downloading installers from random websites, Linux software
+ships as **packages** — bundles that include the program, its metadata, and
+a list of other packages it depends on. A **package manager** installs,
+updates, and removes these, and resolves dependencies automatically so you
+don't have to track them by hand.
+
+## The two families you'll see most
+
+Debian and Ubuntu use `.deb` packages through `apt` (or the older
+`dpkg` underneath it): `sudo apt update` refreshes the list of available
+packages and versions, then `sudo apt install curl` installs one. Red
+Hat, CentOS, and Fedora use `.rpm` packages through `dnf` (or the older
+`yum`): `sudo dnf install curl` does the same job. The commands differ, but
+the concept — a central registry of installable, updatable software with
+dependencies resolved for you — is identical.
+
+## Updating and removing
+
+`sudo apt upgrade` (or `sudo dnf upgrade`) updates every installed package
+to its latest available version — a routine part of [patch
+management](/glossary/patch-management) that keeps known vulnerabilities
+closed. `sudo apt remove packagename` uninstalls a package but can leave
+its configuration files behind; `sudo apt purge packagename` removes those
+too, for a fully clean uninstall.
+
+## Why this matters day to day
+
+Package management tickets usually come in one of two flavors: "this
+software won't install" (often a missing dependency or an outdated package
+list — `apt update` first) or "we need this patched across every machine"
+(a fleet-wide upgrade, not a one-off `install`). Knowing which package
+manager a given distribution uses, and that `update` and `upgrade` are two
+different steps, resolves most of them quickly.
+
+## Practice it
+
+Reading about diagnosing and patching a server only gets you so far — try
+it yourself in the
+[Linux Console scenario](/consoles/linux-console-scenario).
+
+<Quiz id="linux-package-management-quiz" />

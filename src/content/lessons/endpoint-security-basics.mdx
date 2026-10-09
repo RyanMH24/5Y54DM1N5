@@ -1,0 +1,46 @@
+---
+id: endpoint-security-basics
+moduleId: security-fundamentals
+title: Endpoint Security Basics
+order: 3
+summary: Antivirus/EDR, disk encryption, and patching — the baseline defenses every managed endpoint needs.
+quizId: endpoint-security-basics-quiz
+---
+
+## Antivirus vs. EDR
+
+Traditional antivirus matches files against a database of known-bad
+signatures — effective against threats that have been seen before, blind
+to ones that haven't. **EDR** (Endpoint Detection and Response) watches for
+suspicious *behavior* instead — a process trying to encrypt hundreds of
+files in seconds, for example — so it can catch novel threats antivirus
+would miss, and gives responders tools to investigate and contain an
+infected [endpoint](/glossary/endpoint) remotely.
+
+## Disk encryption
+
+Full-disk encryption (BitLocker on Windows, FileVault on macOS) makes a
+drive's contents unreadable without the correct key — meaning a lost or
+stolen laptop is an inconvenience instead of a data breach, since whoever
+has the physical hardware still can't read what's on it. It's one of the
+few controls that's nearly free to deploy and protects against a very
+common, very physical risk.
+
+## Patching: closing known holes
+
+Most successful attacks don't use a secret, novel exploit — they use a
+vulnerability that was already publicly known and already had a patch
+available, just not yet applied. [Patch management](/glossary/patch-management)
+— keeping the OS and installed software up to date across every managed
+endpoint — closes that gap before it gets used, which is why it's treated
+as baseline hygiene rather than an optional extra.
+
+## Why this matters day to day
+
+A newly imaged machine isn't actually ready to hand to a user until all
+three baselines are in place: EDR/antivirus installed and reporting,
+disk encryption enabled, and the OS fully patched. Skipping any one of
+them to save a few minutes on setup is exactly the kind of gap that turns
+into an incident later.
+
+<Quiz id="endpoint-security-basics-quiz" />

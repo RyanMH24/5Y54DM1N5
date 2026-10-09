@@ -1,0 +1,51 @@
+---
+id: cloud-virtualization-basics
+moduleId: cloud-backup-itsm
+title: Cloud & Virtualization Basics
+order: 1
+summary: What a VM actually is, the difference between IaaS/PaaS/SaaS, and why most infrastructure runs virtualized today.
+quizId: cloud-virtualization-basics-quiz
+---
+
+## Virtualization: many computers on one machine
+
+A [hypervisor](/glossary/hypervisor) is software that lets one physical
+machine run several isolated virtual computers at once, each with its own
+OS, unaware of the others sharing the same underlying hardware. Each of
+those virtual computers is a [VM](/glossary/vm) — Virtual Machine. This is
+how a single physical server in a data center can host dozens of
+independent workloads instead of needing one physical box per
+application, which is both far cheaper and far easier to manage.
+
+## IaaS, PaaS, and SaaS
+
+Cloud services are usually grouped by how much the provider manages for
+you. **IaaS** (Infrastructure as a Service) — AWS EC2, Azure VMs — gives
+you a VM and you manage the OS and everything above it, same as an
+on-prem server. **PaaS** (Platform as a Service) — AWS Elastic Beanstalk,
+Azure App Service — manages the OS and runtime for you; you just deploy
+code. **SaaS** (Software as a Service) — Microsoft 365, Salesforce — is a
+finished application you just use, with the provider managing everything
+underneath it. Moving from IaaS toward SaaS trades control for less
+operational burden.
+
+## Why organizations virtualize and move to the cloud
+
+A physical server is almost never used at full capacity around the clock,
+so running one application per physical box wastes most of its capacity
+most of the time. Virtualization lets multiple workloads share that
+capacity; cloud providers take it further by letting you rent exactly the
+capacity you need right now and scale it up or down on demand, instead of
+buying hardware sized for a peak load that might only happen a few days a
+year.
+
+## Why this matters day to day
+
+As IT support, you'll increasingly be troubleshooting a VM or a cloud
+resource instead of a physical box under a desk — the fundamentals
+(is it running, does it have the resources it needs, can it reach the
+network it needs to reach) are identical, the tools you check them with
+are just a web console or a CLI instead of walking over and looking at a
+blinking light.
+
+<Quiz id="cloud-virtualization-basics-quiz" />

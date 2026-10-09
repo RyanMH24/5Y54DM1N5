@@ -14,12 +14,18 @@ export default async function GlossaryTermPage({ params }: GlossaryTermPageProps
   }
 
   return (
-    <main>
-      <h1>
-        {term.term}
-        {term.acronymFor && ` (${term.acronymFor})`}
-      </h1>
-      <p>{term.definition}</p>
+    <main className="game-sky min-h-screen px-4 py-10 sm:px-6 sm:py-14">
+      <div className="mx-auto max-w-2xl rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm sm:p-8">
+        <h1 className="text-2xl font-bold tracking-tight text-[var(--text)] sm:text-3xl">
+          {term.term}
+          {term.acronymFor && (
+            <span className="ml-2 text-lg font-medium text-[var(--text-muted)]">
+              ({term.acronymFor})
+            </span>
+          )}
+        </h1>
+        <p className="mt-3 leading-relaxed text-[var(--text)]">{term.definition}</p>
+      </div>
     </main>
   );
 }
