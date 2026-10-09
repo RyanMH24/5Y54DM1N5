@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { getQuizById } from "@/lib/curriculum/load";
@@ -24,12 +25,15 @@ const mdxComponents = {
   ol: (props: HTMLAttributes<HTMLOListElement>) => (
     <ol className="mt-4 list-decimal space-y-1.5 pl-6 text-[var(--text)]" {...props} />
   ),
-  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className="font-medium text-[var(--node-active-side)] underline-offset-2 hover:underline"
-      {...props}
-    />
-  ),
+  a: ({ href = "", ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const className =
+      "font-medium text-[var(--node-active-side)] underline-offset-2 hover:underline";
+    // Internal links go through next/link so they respect basePath.
+    if (href.startsWith("/")) {
+      return <Link href={href} className={className} {...props} />;
+    }
+    return <a href={href} className={className} {...props} />;
+  },
   code: (props: HTMLAttributes<HTMLElement>) => {
     // Fenced code blocks come through as <pre><code className="language-...">;
     // they get the <pre> override's background, so skip the inline-code chip here.

@@ -49,7 +49,10 @@ npm test          # run the test suite
 npm run typecheck # TypeScript check
 npm run lint      # ESLint
 npm run build     # production build
+npm run build:static  # static HTML export to out/ (for GitHub Pages)
 ```
+
+The live demo is a static export hosted inside the portfolio site. `build:static` builds it for the `/Ryan-M.-Hernandez-Portfolio/5y54dm1n5` sub-folder by default; set `BASE_PATH` to host it somewhere else.
 
 ## Project structure
 

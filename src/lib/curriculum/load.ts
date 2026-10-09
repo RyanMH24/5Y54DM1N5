@@ -83,6 +83,13 @@ export function loadLesson(lessonId: string): LoadedLesson {
   return resolveLesson(lessonId, data, content, quizzes);
 }
 
+export function getAllLessonIds(): string[] {
+  return fs
+    .readdirSync(LESSONS_DIR)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => file.slice(0, -".mdx".length));
+}
+
 export function getQuizById(quizId: string): Quiz {
   const quiz = quizzes[quizId];
   if (!quiz) {

@@ -1,8 +1,12 @@
-import { loadLesson } from "@/lib/curriculum/load";
+import { getAllLessonIds, loadLesson } from "@/lib/curriculum/load";
 import { LessonRenderer } from "@/components/LessonRenderer";
 
 interface LessonPageProps {
   params: Promise<{ id: string }>;
+}
+
+export function generateStaticParams() {
+  return getAllLessonIds().map((id) => ({ id }));
 }
 
 export default async function LessonPage({ params }: LessonPageProps) {

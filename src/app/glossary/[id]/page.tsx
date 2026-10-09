@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
-import { getTermById } from "@/lib/glossary/load";
+import { getAllTerms, getTermById } from "@/lib/glossary/load";
 
 interface GlossaryTermPageProps {
   params: Promise<{ id: string }>;
+}
+
+export function generateStaticParams() {
+  return getAllTerms().map((term) => ({ id: term.id }));
 }
 
 export default async function GlossaryTermPage({ params }: GlossaryTermPageProps) {
